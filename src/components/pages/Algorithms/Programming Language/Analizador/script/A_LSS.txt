@@ -1,0 +1,280 @@
+//Codigo medianamente funcional al 14/01/2021 02:38 pm
+/*
+una semana despues no se que era lo que medianamente funcionaba en este programa
+probablemente solo hacia el analisis lexico y sintactico de un codigo
+la clase A_LSS_VAR ha sido modificada poco y no tanto como para requerir el guardarla
+21/01/2021 19:18 pm
+
+*/
+
+import {
+    p_e,
+    p_s,
+    T,
+    c,
+    f,
+    valores
+} from './A_LSS_VAR.js';
+
+var codigo = document.getElementById('codigo').value
+codigo = codigo.replace(/\s/g, '')
+codigo = codigo.split(/(<=|>=|!=|[|][|]|[&][&]|<|>|switch|else|if|case|break|default|do|for|while|Fin|print|input|int|float|char|string|bool|palabra|caracter|num|id|true|false|.)/).filter(Boolean)
+
+console.log(codigo.length)
+codigo.push('$')
+console.log(codigo)
+
+var asignacion = '='
+var terminador=';'
+var tipos_dato = ["string", "char", "int", "float", "bool"]
+var retornar_igual = [':', ',', '{', '}', '$',"true", "false"]
+var operacion = ['+', '-', '*', '/', '(', ')']
+var comparacion = ['<', '>', '<=', '>=', '!=', '||', '&&', '[', ']']
+var boelanos =['true','false']
+var palab_clave = ["if", "switch", "do", "while", "for", "break", "else", "print", "read", "case", "default", "input", "Fin", ]
+
+var RegEx_Variable = /(\w)/
+var RegEx_Numero_Int = new RegExp('^\\d+$');
+var RegEx_Numero_Float = new RegExp('^-?\d+\.?\d*$|^\d*\.?\d+$')
+//palabras a regresar ( id pala	carac num true false numf )
+
+
+
+
+var cadena_tabla = ""
+var tabla_de_variables = []
+var pila_semantica = []
+
+var TABLA = []
+
+var fa, ca;
+
+setup()
+
+function setup() {
+    InicializarTabla()
+    Analizar()
+}
+
+// console.log(tabla_de_variables)
+
+function InicializarTabla() {
+
+    cadena_tabla = cadena_tabla + '<table class="table table-hover"><thead><tr class="table-info"><td>estado</td>'
+    c.split("	").map(elem => {
+        cadena_tabla = cadena_tabla + '<th scope="col">' + elem + '</th>'
+    });
+    cadena_tabla = cadena_tabla + '</tr></thead>'
+
+    let cont = 0
+    f.split("	").map(elem => {
+        cadena_tabla = cadena_tabla + '<tr class="table-active"><td>' + elem + '</td>'
+        T[cont].split("	").map(token => {
+            cadena_tabla = cadena_tabla + '<td>' + token + '</td>'
+        });
+        cont++
+        cadena_tabla = cadena_tabla + '</tr>'
+    });
+    cadena_tabla = cadena_tabla + '</table>'
+    document.getElementById("Tabla5").innerHTML = cadena_tabla
+
+    ca = c.split("	")
+    fa = f.split("	")
+
+    console.log(ca.indexOf('int'))
+
+    T.map(tab => {
+        TABLA.push(tab.split("	"))
+    });
+}
+
+
+function Analizar() {
+    var pila = ['s0']
+    var entrada = ''
+    var i = 0
+    let iteraciones = 0
+    do {
+        entrada = A_L(codigo[i])
+        if (entrada == 'error') {
+            break;
+        }
+
+
+        var fila = fa.indexOf(pila[pila.length - 1]) //obtener el ultimo estado de la pila
+        var columna = ca.indexOf(entrada) //obtener la posicion del token a analizar
+
+        if (entrada == '$' && TABLA[fila][columna] == 'P0') { //se acepta{
+            console.log("Todo correcto")
+            break
+        }
+
+        console.log('Codigo ' + codigo[i] + ' Fila:' + fila + ' Columna:' + columna + ' Tabla:' + TABLA[fila][columna] + ' Entrada:' + entrada)
+
+        if (TABLA[fila][columna].charAt(0) == 's') {
+            //Significa que se Desplazara
+
+            pila.push(entrada)
+            pila.push(TABLA[fila][columna])
+            i++
+            // console.log('La pila tiene '+pila)
+            // continue
+        } else if (TABLA[fila][columna].charAt(0) == 'r') {
+            //Significa que se Reducirá
+            //Acciones semanticas segun la produccion
+            var andrea = TABLA[fila][columna]
+
+            do {
+                pila.pop()
+                if (iteraciones++ >= 500) {
+                    console.log('Te pasaste de v carnal')
+                    break
+                }
+            } while (p_e[TABLA[fila][columna]] != pila[pila.length - 1])
+            if (iteraciones++ >= 500) {
+                console.log('Te pasaste de v carnal')
+                break
+            }
+            pila.pop()
+            pila.push(p_s[TABLA[fila][columna]])
+            console.log(pila)
+            fila = parseInt(pila[pila.length - 2].substr(1, pila[pila.length - 2].length - 1)) //obtener el ultimo estado de la pila
+            // console.log(fila + ' ' + columna + ' ' + pila + ' '+TABLA[fila][columna]+'Aqui hay error')
+            columna = ca.indexOf(pila[pila.length - 1])
+            // console.log(fila + ' ' + columna + ' ' + pila[pila.length-1]  )
+            console.log('Fila:' + fila + ' Columna:' + columna + ' Tabla:' + TABLA[fila][columna])
+            console.log('Pila semantica: ' + pila_semantica)
+            // cadena_tabla_semantico = cadena_tabla_semantico + '<td>'+pila_semantica+'</td></tr>'
+            pila.push(TABLA[fila][columna])
+            // console.log(TABLA[fila][columna])
+            console.log("===========================" + andrea)
+
+            //Acciones semanticas dependiendo de la produccion
+
+
+
+            if (iteraciones++ >= 500) {
+                console.log('Te pasaste de v carnal')
+                break
+            }
+        } else {
+            break;
+        }
+
+        console.log('La pila tiene ' + pila)
+        console.log('El codigo tiene ' + entrada)
+
+        // if (iteraciones++ >= 500) {
+        //     console.log('Te pasaste de v carnal')
+        //     break
+        // }
+
+        console.log(i)
+        console.log(tabla_de_variables)
+    } while (i <= codigo.length)
+
+    
+
+    // }
+}
+var ban_asignacion = false
+var tipo_dato_actual = ""
+var T1 = ''
+var T2 = ''
+var id_asignar=''
+var pila_posfija=[]
+
+function A_L(ent) {
+    let tdd = tipos_dato.indexOf(ent) //revisar palabras clave
+    console.log("Entro con "+ent)
+
+    if(palab_clave.indexOf(ent)!=-1){
+        //muchas mas cosas depende de lo que le llegue
+        return ent;
+    }else if (tdd != -1) {
+        tipo_dato_actual = ent
+        return ent
+    } else {
+        //si la entrada corresponde con un ';' entonces se limpian ciertas variables
+        ////puede ser innecesario este paso pero alv
+        if (terminador /*;*/ == ent) {
+            tipo_dato_actual = ''
+            //primero debe asignar a la variable y luego 
+            //Valor= al valor obtenido en la pila posfija 
+            // tabla_de_variables[id_asignar].Valor=
+            id_asignar=''
+            //comparar T1 y T2
+            ban_asignacion = false
+            return ent
+        } else if (retornar_igual.indexOf(ent) != -1) {
+            return ent
+        } else if (asignacion == ent) {
+            ban_asignacion = true
+            //asignado = ent
+            // console.log('estas pendejo mijo ')
+            return ent
+        } else if (operacion.indexOf(ent) != -1) {
+            //saca los dos tipos de dato de arriba de la tabla semantica
+            // T1 = pila_semantica.pop()
+            // T2 = pila_semantica.pop()
+            // if (T1 != T2) {
+            //     pila_semantica.push('float')
+            // } else {
+            //     pila_semantica.push(T1)
+            // }
+            // cadena_tabla_semantico = cadena_tabla_semantico + '<td>'+ent+'</td><td>'+tabla_de_variables[ent].Tipo+'</td><td>'+pila_semantica+'</td></tr>'
+            return ent
+        } else if (RegEx_Variable.test(ent) && !RegEx_Numero_Int.test(ent)) {
+            if (tipo_dato_actual != '') {
+                //si hay un tipo de dato actual se declara la variable
+                console.log(typeof tabla_de_variables[ent])
+                if (typeof tabla_de_variables[ent] !== 'object') {
+                    ASDeclararVariable(ent)
+                    console.log(tabla_de_variables)
+                } else {
+                    if (tabla_de_variables[ent].Tipo != tipo_dato_actual) {
+                        return 'error'
+                    } else {
+                        //variable declarada correctamente pero analizada de nuevo
+                    }
+                }
+                //si no hay un tipo de dato actual se piensa que se va a analizar la variable
+            } else {
+                if(ban_asignacion){
+                    //se hace solo una vez para tener guardado el valor del id en el que se va
+                    //a guardar el valor
+                    id_asignar=T1
+                    ban_asignacion=false
+                }else{
+                    // T1 = tabla_de_variables[ent].Tipo
+                    T1=ent
+                    pila_semantica.push(tabla_de_variables[T1].Tipo)
+                }
+            }
+            return 'id'
+        } else if(RegEx_Numero_Int.test(ent)){
+            //si es una asignacion le asigna el valor a la variable
+            console.log("SAHDKJASHDKJHSADH"+ent)
+
+            pila_semantica.push('num')
+            return 'num'
+        }else if(boelanos.indexOf(ent)!=-1){
+
+            pila_semantica.push('bool')
+            return ent
+        }else{
+            //// eres joto();
+        }
+    }
+    console.log("SAHDKJASHDKJHSADH"+ent)
+    return ent;
+}
+
+function ASDeclararVariable(ent) {
+    tabla_de_variables[ent] = {
+        Nombre: ent,
+        Tipo: tipo_dato_actual,
+        Token: 'id',
+        Valor: valores[tipo_dato_actual]
+    }
+}

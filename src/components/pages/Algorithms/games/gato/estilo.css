@@ -1,0 +1,78 @@
+:root {
+    font-size: 15px;
+    font-family: 'Quicsand';
+    --azul: #3b83bd;
+    --verde: #008f39;
+    --naranja: #ff8000;
+    --cafe: #804000;
+    --blanco: #ffffff;
+    --transition-speed: 600ms;
+}
+
+* {
+    padding: 0;
+    padding: 0;
+}
+
+.pagina {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.tablero {
+    background-color: var(--naranja);
+    width: 20rem;
+    height: 20rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: .5rem;
+    padding-top: 1rem;
+}
+
+.casilla {
+    background-color: var(--verde);
+    height: 6rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido {
+    font-size: 40px;
+    background-color: var(--azul);
+    width: 3rem;
+    height: 3rem;
+    margin: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marcador {
+    background-color: var(--cafe);
+    color: var(--blanco);
+    width: 20rem;
+    height: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: .5rem;
+    padding-top: 1rem;
+}
+
+.turno {
+    text-align: center;
+    padding: 1rem;
+}
+
+.reset {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

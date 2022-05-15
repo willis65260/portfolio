@@ -1,0 +1,97 @@
+:root {
+  --azules-fondo-oscuro-hex: #2d425c;
+  --azules-blanco-hex: #c1d9f5;
+  --azules-mas-tenue-hex: #6b9edb;
+  --azules-fondo-hex: #212121;
+  --azules-fondo-tenue-hex: #5279a8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #212121;
+}
+
+.App {
+  height: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--azules-fondo-hex);
+
+  /* filter: blur(12px); */
+}
+
+.blur {
+  position: absolute;
+  /* background-color: rgba(45, 66, 92, .3); */
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  /* background-color: #555;
+    box-shadow: 0 0 5px 10px #555; */
+  /* filter: blur(10px); */
+  /* z-index: -1; */
+  filter: blur(5px);
+}
+
+.contenedor {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  /* background-color: var(--azules-fondo-hex) */
+}
+
+.svg {
+  /* aspect-ratio: none; */
+  /* position: relative; */
+  height: 100vh;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  /* aspect-ratio: 900/600; */
+}
+
+.svg-s {
+  /* position: relative; */
+  height: 100vh;
+  width: 100%;
+  /* position: relative; */
+  top: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.background-absolute{
+  position: absolute;
+}
+
+.otronombre {
+  position: absolute;
+  width: 100%;
+}
+
+.test {
+  position: absolute;
+  width: 70%;
+  height: 100vh;
+  background-color: rgba(33, 33, 33, .8);
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* position: absolute; */
+  z-index: 1;
+}
+
+
+.nav-bar{
+  position:absolute ;
+  width: 100%;
+  height: 10vh;
+  background-color: #c1d9f5;
+  z-index: 3;
+}

@@ -1,0 +1,86 @@
+:root {
+  --bacground-color: #e3e3e3;
+  --border-size: 2px;
+  --accent-color:#0AF;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+button {
+  margin: 1rem;
+}
+
+.btn {
+  background-color: var(--bacground-color);
+  color: #222;
+  padding: 0.5em 1em;
+  border: none;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.btn-border-pop::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border: var(--border-size) solid var(--bacground-color);
+  transition: top,left,right,bottom, 100ms ease-in-out
+}
+
+.btn-border-pop:hover::before,
+.btn-border-pop:focus::before {
+  top: calc(var(--border-size) * -2);
+  right: calc(var(--border-size) * -2);
+  left: calc(var(--border-size) * -2);
+  bottom: calc(var(--border-size) * -2);
+}
+
+
+.btn-background-slide{
+    transition: color 300ms ease-in-out;
+    z-index: 1;
+}
+
+.btn-background-slide::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+
+    background-color: var(--accent-color);
+
+    transition: transform 300ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+
+.btn-background-slide:hover::before,
+.btn-background-slide:focus::before{
+    transform: scaleX(1);
+}
+
+.btn-background-slide:hover,
+.btn-background-slide:focus{
+    color: white;
+}

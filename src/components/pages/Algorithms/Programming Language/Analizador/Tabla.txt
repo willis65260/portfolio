@@ -1,0 +1,43 @@
+
+
+
+
+
+
+
+PR --> Declaracion DCP
+DC -->  Asigna DC |Selec DC | Repe DC | print ( V ) ; DC | ‘}’
+DCP -->  Asigna DCP |Selec DCP | Repe DCP | print(V); DCP |Fin
+Declaracion --> Tipo id A
+A -->  , id A | ; Declaracion | ;
+Tipo -->  String | char | int | float | bool
+
+
+Asigna -->  id = E ;
+E --> Oper | cmp | input() | palabra | caracter
+Oper -->  Oper+T | Oper-T | T
+T -->  T*F | T/F | F
+F --> (Oper) | id | num
+
+cmp  -->  cmp > B | cmp<B | cmp>=B | cmp<=B | cmp!=B | cmp&&B | cmp’||’B |B
+B --> (cmp) | id | true | false | num
+
+Selec -->  Fi | switch(id){S}
+Fi --> C { DC ; | C { DC  else { DC ;
+C --> if(cmp)
+S --> case N: DC break; D
+D --> case N: DC break; D | default : DC break;
+N -->  num | id |true |false
+
+Repe --> do{DCW; | W{DC; | for ( IFo ; cmp ; num) { DC ;
+W --> while(cmp)
+IFo -->  TipoF id=num;
+TipoF --> int | float
+
+
+
+
+
+
+
+

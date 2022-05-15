@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analizador</title>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="stylesheet" href="Bootstrap/css/bootstrapD.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="Bootstrap/js/bootstrap.js"></script>
+</head>
+
+<body>
+  <br>
+
+  <div class="">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="Tabla1-tab" data-bs-toggle="tab" href="#Tabla1" role="tab" aria-controls="Tabla1"
+          aria-selected="true">Codigo</a>
+        <a class="nav-link" id="Tabla2-tab" data-bs-toggle="tab" href="#Tabla2" role="tab" aria-controls="Tabla2"
+          aria-selected="false">Lexico</a>
+        <a class="nav-link" id="Tabla3-tab" data-bs-toggle="tab" href="#Tabla3" role="tab" aria-controls="Tabla3"
+          aria-selected="false">Sintactico</a>
+        <a class="nav-link" id="Tabla5-tab" data-bs-toggle="tab" href="#Tabla5" role="tab" aria-controls="Tabla5"
+          aria-selected="false">Tabla</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="Tabla1" role="tabpanel" aria-labelledby="Tabla1-tab">
+        <br>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <br>
+              <br>
+              <textarea id="codigo" cols="30" rows="10">
+                int o,n,u,c;
+                print("\nDame_labase:_");
+                n=input("");
+                
+                print("\nDame_laaltura:_");
+                u=input("");
+                
+                print("\nEl_resultadoes:_");
+                c=(n*u)/2;
+                print(c);
+                
+                Fin
+              </textarea>
+              <!--&#10float b,c;&#10c=a*b;-->
+              <br>
+              <br>
+              <button class="btn btn-outline-success" id="compilar">Compilador V 0.1 alpha</button>
+            </div>
+            <div class="col">
+              <br>
+              <br>
+              <textarea id="codigoC" cols="30" rows="10">
+
+                </textarea>
+              <!--&#10float b,c;&#10c=a*b;-->
+              <br>
+              <br>
+              <!-- <button class="btn btn-outline-success disabled" id="compilar">Compilador V 0.1 alpha</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="Tabla2" role="tabpanel" aria-labelledby="Tabla2-tab"></div>
+      <div class="tab-pane fade" id="Tabla3" role="tabpanel" aria-labelledby="Tabla3-tab">...</div>
+      <div class="tab-pane fade" id="Tabla5" role="tabpanel" aria-labelledby="Tabla5-tab">...</div>
+    </div>
+  </div>
+
+
+  <script type="module" src="/script/A_LSS.js"></script>
+</body>
+
+</html>
+
+<!-- 
+  if([5>6]){
+          
+    }
+a = [5 > 9] && [ 9 > 5 ] && [5 > 9] && [ 9 > 5 ] : ;
+b = (9+100)*(90/5);
+switch ( b ) { case 5 { if ( a ) { a = [ b > 5 ] && [ 5 < b ] : ; } else { while ( a ) { for ( int c = 3 ;  c < 5 : 1 ) {  } } } } break ; default { do {  } while ( a ) ; } break ; } Fin Fin
+bool id ; id = num ; switch ( id ) { case num { if ( id ) { id = [ id > id ] && [ id < id ] : ; } else { while ( id ) { for ( int id = num ; id < id : num ) {  } } } } break ; default { do {  } while ( id ) ; } break ; } Fin Fin  
+int id ,id;
+bool id;
+id=num;
+id=bool;
+id=id+num;
+if(id){
+  if(id<num){
+    while(id){
+      print(palabra);
+      print(palabra);
+    }
+  }
+}   
+
+switch(o){
+  case 1{
+    print("dame_el_numero_1:_");
+    n=input("");
+    print("dame_el_numero_2:_");
+    u=input("");
+    c=n+u;
+    print("la_respuesta_es_:_");
+    print(c);
+  }break;
+  case 2{
+    print("dame_el_numero_1:_");
+    n=input("");
+    print("dame_el_numero_2:_");
+    u=input("");
+    c=n-u;
+    print("la_respuesta_es_:_");
+    print(c);
+  }break;
+  default{
+    print("Tamal");
+  }break;
+}
+
+#include <stdio.h>
+#include <stdbool.h>
+int main() {              
+    int edad=20;
+    bool condicion;
+    condicion=5>6;
+    
+    if(condicion>3)
+    printf("hola ");
+    
+    printf("dame tu edad: ");
+    scanf("%d",&edad);
+    if(edad<18)
+    goto sino1; 
+    // entonces
+    printf("Eres mayor de edad...");
+    goto finif1;
+    sino1: 
+        printf("Eres menor de edad...");
+    
+   finif1:
+   printf("Fin de programa...");
+}
+
+bool a ;
+int b ;
+
+if([b>5]){
+  b=5+10;
+}else{
+  if([b>5]){
+    
+  }
+  b=5+10;
+}
+Fin
+Fin
+
+a=[5>6]:;
+
+switch(b){
+  case 5{
+    switch(b){
+      case 5{
+        a=[5>6]&&[7<8]:;
+      }break;
+      default{
+    
+      }break;
+    }
+  }break;
+  default{
+
+  }break;
+}
+
+if (entrada == 'print'){
+
+bool a ;
+int b ;
+b=6;
+switch(b){
+  case 5{
+    switch(b){
+      case 5{
+        b = (9+100);
+      }break;
+      case 6{
+        b = (9+100);
+      }break;
+      default{
+        b = (9+100);
+      }break;
+    }
+  }break;
+  case 6{
+    switch(b){
+      case 5{
+        b = (9+100);
+      }break;
+      case 6{
+        print("Ingrese el numero");
+        b=input('');
+        print(b);
+      }break;
+      default{
+        b = (9+100);
+      }break;
+    }
+  }break;
+  default{
+    b = (9+100);
+  }break;
+}
+print("Ingrese el numero");
+
+Fin
+int o,n,u,c;
+
+print("\nDame_la_base_:_");
+n=input("");
+
+print("Dame_la_altura_:_");
+u=input("");
+
+print("El_resultado_es_:_");
+c=(n*u)/2;
+print(c);
+
+Fin
+
+
+                //     codigo_obj += 'printf('
+                // }else{
+                //     codigo_obj += codigo[i];
+                // } 
+                // if(entrada==terminador) ban_print==false
+
+
+
+
+
+
+
+
+
+
+
+                
+-->
