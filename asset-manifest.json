@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.d47972dd.css",
-    "main.js": "/portfolio/static/js/main.9a952579.js",
+    "main.css": "/portfolio/static/css/main.ae7128f2.css",
+    "main.js": "/portfolio/static/js/main.e8690c2e.js",
     "static/media/Proyecto2.jar": "/portfolio/static/media/Proyecto2.365e0429c9248e79f96a.jar",
     "static/media/ProyectoTransformaciones.jar": "/portfolio/static/media/ProyectoTransformaciones.978ecc1804a318f48b70.jar",
     "static/media/Sepientes_Escaleras_ElReyLeon.jar": "/portfolio/static/media/Sepientes_Escaleras_ElReyLeon.f602a0857740f161cb77.jar",
     "static/media/statisticsWoL.png": "/portfolio/static/media/statisticsWoL.08eb01020c16d3994ffa.png",
     "static/media/foto perfil.jpg": "/portfolio/static/media/foto perfil.3d741285ea5d8bd4aa22.jpg",
     "index.html": "/portfolio/index.html",
-    "main.d47972dd.css.map": "/portfolio/static/css/main.d47972dd.css.map",
-    "main.9a952579.js.map": "/portfolio/static/js/main.9a952579.js.map"
+    "main.ae7128f2.css.map": "/portfolio/static/css/main.ae7128f2.css.map",
+    "main.e8690c2e.js.map": "/portfolio/static/js/main.e8690c2e.js.map"
   },
   "entrypoints": [
-    "static/css/main.d47972dd.css",
-    "static/js/main.9a952579.js"
+    "static/css/main.ae7128f2.css",
+    "static/js/main.e8690c2e.js"
   ]
 }
