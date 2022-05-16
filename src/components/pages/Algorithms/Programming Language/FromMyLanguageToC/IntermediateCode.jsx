@@ -36,7 +36,7 @@ const IntermediateCode = () => {
       <h5 className="texto">
         {" "}
         atm it has very basic commands but if you wanna see all that it can do,
-        please check the grammar on 'GitHub'
+        please check the grammar on '<a href="https://github.com/willis65260/Analizador" target="_blank" rel="noreferrer noopener" className="a-ref-color" >GitHub</a>'
       </h5>
       <pre id="codigo-tra">
         {transaltion}

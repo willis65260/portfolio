@@ -1,6 +1,6 @@
 import React from "react";
 import img from "../../resources/foto perfil.jpg";
-
+import resume from "./Algorithms/JoseEduardoAcademicResume.pdf"
 const Home = () => {
   return (
     <div className="page-home">
@@ -17,8 +17,11 @@ const Home = () => {
           situations and i can make decisions underpressure very well.
         </h5>
         <h5 className="texto">
-          let's hop over the "what have i done" tab to see some of my projects!
+          let's hop over the "what have i done" tab to see some of my projects! or '<a href={resume} className="a-ref-color" target="_blank" rel="noreferrer" download>
+              Download
+            </a>' my resume
         </h5>
+       
       </div>
     </div>
   );

@@ -173,7 +173,7 @@ const dataLinks = {
   linkedin: {
     app: "linkedin",
     title: "Scan the Qr to go to my linkedin profile",
-    profile: "https://www.linkedin.com/in/jose-eduardo-poo-tapia-9a9b7a123/",
+    profile: "https://www.linkedin.com/in/joseeduardo6/",
     icon: icon_linkedin_big,
     referal: (
       <>
@@ -192,7 +192,7 @@ const dataLinks = {
     ),
     qr: (
       <QRCodeSVG
-        value={"https://www.linkedin.com/in/jose-eduardo-poo-tapia-9a9b7a123/"}
+        value={"https://www.linkedin.com/in/joseeduardo6/"}
         size={128}
         bgColor={"#ffffff"}
         fgColor={"#000000"}
